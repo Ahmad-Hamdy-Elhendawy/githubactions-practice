@@ -1,0 +1,22 @@
+name: linux lab
+
+on:
+  push:
+    branches: [main]
+
+jobs: 
+  linux:
+    runs-on: ubuntu:latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@4
+
+      - name: Who am I?
+        run: whoami
+
+      - name: System information
+        run: uname -a
+
+      - name: List project files
+        run: ls -la
