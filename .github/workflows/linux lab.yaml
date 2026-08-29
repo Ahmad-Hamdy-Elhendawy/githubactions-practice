@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: checkout repo
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
 
       - name: Who am I?
         run: whoami
