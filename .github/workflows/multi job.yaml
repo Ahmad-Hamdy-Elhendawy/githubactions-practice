@@ -51,6 +51,7 @@ jobs:
         run: echo "secret api = ${{ secrets.API_KEY }}"
 
   deploy:
+    if: ${{ github.ref == 'refs/heads/main' && sucess() }}
     needs: test
     runs-on: ubuntu-latest
     steps:
