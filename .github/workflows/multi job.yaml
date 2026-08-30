@@ -25,7 +25,7 @@ jobs:
       - run: echo "testing rn"
 
   deploy:
-    needs: test
+    needs: [test, build]
     runs-on: ubuntu-latest
     steps:
       - run: echo "deploying ${{ needs.build.outputs.image_tag}}"
