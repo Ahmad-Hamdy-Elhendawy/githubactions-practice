@@ -28,4 +28,4 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - run: echo "deploying" ${{ needs.build.outputs.image_tag}}
+      - run: echo "deploying ${{ needs.build.outputs.image_tag}}"
