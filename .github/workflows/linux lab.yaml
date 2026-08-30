@@ -17,7 +17,15 @@ jobs:
 
       - name: app name
         run: echo "$APP_NAME"
-        
+
+      - name: in main
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: echo "we are on main"
+
+      - name: in main
+        if: ${{ github.ref != 'refs/heads/main' }}
+        run: echo "we are NOT on main"
+
       - name: Who am I?
         run: whoami
 
