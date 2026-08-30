@@ -17,6 +17,15 @@ jobs:
         id: build_tag
         run: echo "image_tag=abc123" >> "$GITHUB_OUTPUT" 
 
+      - name: create artifact
+        run: echo "random bullshit go" >> hellyeah.txt
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifactTM
+          path: hellyeah.txt
+
 
   test:
     needs: build
@@ -24,8 +33,18 @@ jobs:
 
     outputs:
       image_tag: ${{ needs.build.outputs.image_tag }}
+
     steps:
-      - run: echo "testing rn"
+      - name: print stuff 
+        run: echo "testing rn"
+
+      - name: download artifact
+        uses: actions/download-artifact@v4
+        with: 
+          name: artifactTM
+
+      - name: read artifact
+        run: cat hellyeah.txt
 
   deploy:
     needs: test
