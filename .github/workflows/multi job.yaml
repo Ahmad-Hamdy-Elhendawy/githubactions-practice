@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs: 
-      image_tag: ${{ steps.build_tag.outputs.image_tag }}
+      image_tag: ${{ needs.build.outputs.image_tag }}
       
     steps:
       - name: build
