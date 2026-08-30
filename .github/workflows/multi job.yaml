@@ -46,6 +46,9 @@ jobs:
       - name: read artifact
         run: cat hellyeah.txt
 
+      - name: echo secret
+        run: echo "secret api = ${{ secrets.API_KEY }}"
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
