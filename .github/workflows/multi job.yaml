@@ -17,15 +17,19 @@ jobs:
         id: build_tag
         run: echo "image_tag=abc123" >> "$GITHUB_OUTPUT" 
 
-
+  
   test:
     needs: build
     runs-on: ubuntu-latest
+
+    outputs:
+      image_tag: ${{steps.build_tag.outputs.image_tag}}
+
     steps:
       - run: echo "testing rn"
 
   deploy:
-    needs: [test, build]
+    needs: test
     runs-on: ubuntu-latest
     steps:
-      - run: echo "deploying ${{ needs.build.outputs.image_tag}}"
+      - run: echo "deploying ${{ needs.test.outputs.image_tag}}"
