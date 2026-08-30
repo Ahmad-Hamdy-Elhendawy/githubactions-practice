@@ -10,21 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs: 
-      image_tag: ${{ needs.build.outputs.image_tag }}
+      image_tag: ${{ steps.build_tag.outputs.image_tag }}
       
     steps:
       - name: build
         id: build_tag
         run: echo "image_tag=abc123" >> "$GITHUB_OUTPUT" 
 
-  
+
   test:
     needs: build
     runs-on: ubuntu-latest
 
     outputs:
-      image_tag: ${{steps.build_tag.outputs.image_tag}}
-
+      image_tag: ${{ needs.build.outputs.image_tag }}
     steps:
       - run: echo "testing rn"
 
