@@ -30,6 +30,7 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
+    environment: SECRET_ENV
 
     outputs:
       image_tag: ${{ needs.build.outputs.image_tag }}
