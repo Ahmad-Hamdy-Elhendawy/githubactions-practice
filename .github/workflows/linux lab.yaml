@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+env:
+  APP_NAME: medical-rag
+
 jobs: 
   linux:
     runs-on: ubuntu-latest
@@ -12,6 +15,9 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
 
+      - name: app name
+        run: echo "$APP_NAME"
+        
       - name: Who am I?
         run: whoami
 
